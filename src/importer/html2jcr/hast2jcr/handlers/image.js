@@ -52,12 +52,12 @@ const image = {
     return false;
   },
   getAttributes: (node) => {
-    const { alt, title, src: fileReference } = getImage(node);
+    const { alt, title, src: image } = getImage(node);
     return {
       rt: resourceType,
       alt,
       ...(title !== '' ? { title } : {}),
-      fileReference,
+      image,
     };
   },
   leaf: true,
