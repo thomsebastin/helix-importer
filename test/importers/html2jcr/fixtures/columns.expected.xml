@@ -6,26 +6,26 @@
                 <columns sling:resourceType="core/franklin/components/columns/v1/columns" jcr:primaryType="nt:unstructured" columns="2" rows="3">
                     <row1 jcr:primaryType="nt:unstructured">
                         <col1 jcr:primaryType="nt:unstructured">
-                            <title sling:resourceType="core/franklin/components/title/v1/title" jcr:primaryType="nt:unstructured" jcr:title="What is Lorem Ipsum?" type="h2"/>
+                            <title sling:resourceType="core/franklin/components/title/v1/title" jcr:primaryType="nt:unstructured" title="What is Lorem Ipsum?" titleType="h2"/>
                         </col1>
                         <col2 jcr:primaryType="nt:unstructured">
-                            <title sling:resourceType="core/franklin/components/title/v1/title" jcr:primaryType="nt:unstructured" jcr:title="What is Lorem Ipsum?" type="h2"/>
+                            <title sling:resourceType="core/franklin/components/title/v1/title" jcr:primaryType="nt:unstructured" title="What is Lorem Ipsum?" titleType="h2"/>
                         </col2>
                     </row1>
                     <row2 jcr:primaryType="nt:unstructured">
                         <col1 jcr:primaryType="nt:unstructured">
-                            <title sling:resourceType="core/franklin/components/title/v1/title" jcr:primaryType="nt:unstructured" jcr:title="What is Lorem Ipsum?" type="h2"/>
+                            <title sling:resourceType="core/franklin/components/title/v1/title" jcr:primaryType="nt:unstructured" title="What is Lorem Ipsum?" titleType="h2"/>
                         </col1>
                         <col2 jcr:primaryType="nt:unstructured">
-                            <title sling:resourceType="core/franklin/components/title/v1/title" jcr:primaryType="nt:unstructured" jcr:title="What is Lorem Ipsum?" type="h2"/>
+                            <title sling:resourceType="core/franklin/components/title/v1/title" jcr:primaryType="nt:unstructured" title="What is Lorem Ipsum?" titleType="h2"/>
                         </col2>
                     </row2>
                     <row3 jcr:primaryType="nt:unstructured">
                         <col1 jcr:primaryType="nt:unstructured">
-                            <title sling:resourceType="core/franklin/components/title/v1/title" jcr:primaryType="nt:unstructured" jcr:title="What is Lorem Ipsum?" type="h2"/>
+                            <title sling:resourceType="core/franklin/components/title/v1/title" jcr:primaryType="nt:unstructured" title="What is Lorem Ipsum?" titleType="h2"/>
                         </col1>
                         <col2 jcr:primaryType="nt:unstructured">
-                            <title sling:resourceType="core/franklin/components/title/v1/title" jcr:primaryType="nt:unstructured" jcr:title="What is Lorem Ipsum?" type="h2"/>
+                            <title sling:resourceType="core/franklin/components/title/v1/title" jcr:primaryType="nt:unstructured" title="What is Lorem Ipsum?" titleType="h2"/>
                         </col2>
                     </row3>
                 </columns>
