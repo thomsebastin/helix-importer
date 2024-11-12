@@ -278,22 +278,37 @@ function extractProperties(node, id, ctx, mode) {
     } else if (field?.component === 'richtext') {
       const parentSelector = mode === 'blockItem' ? ':scope' : ':scope > div';
       const containers = selectAll(parentSelector, children[childIdx]);
-      // for each node of the richtext, we need to check if it is a text node or a tag
-      const selection = [];
-      containers[0]?.children.forEach((child) => {
-        // if it is a text node and does not start with a new line, wrap it in a paragraph
-        if (child.type === 'text' && !child.value.startsWith('\n')) {
-          const textTag = {
-            type: 'element',
-            tagName: 'p',
-            properties: {},
-            children: [child],
-          };
-          selection.push(textTag);
+      let selection = [];
+      containers[0]?.children.forEach((child, index, array) => {
+        if (child.type === 'text' && child.value.startsWith('\n')) {
+          if (index !== 0 && index !== array.length - 1 && array[index - 1].tagName !== 'p') {
+            // replace text element containing \n with a <br> (line break), only if:
+            // the element is neither the first nor the last element
+            // the element before is not a <p> element
+            const lineBreak = {
+              type: 'element',
+              tagName: 'br',
+              properties: {},
+              children: [],
+            };
+            selection.push(lineBreak);
+          }
         } else {
           selection.push(child);
         }
       });
+      // if the first or the last child is not an element, wrap all the elements in <p></p>
+      if (selection[0]?.type !== 'element'
+        || selection[selection.length - 1]?.type !== 'element') {
+        const p = {
+          type: 'element',
+          tagName: 'p',
+          properties: {},
+          children: selection,
+        };
+        // replace the selection items with the new p
+        selection = [p];
+      }
       properties[field.name] = encodeHtml(toHtml(selection).trim());
     } else {
       const imageNode = select('img', children[childIdx]);
