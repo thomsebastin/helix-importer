@@ -5,7 +5,7 @@
             <section sling:resourceType="core/franklin/components/section/v1/section" jcr:primaryType="nt:unstructured">
                 <image sling:resourceType="core/franklin/components/image/v1/image" jcr:primaryType="nt:unstructured" alt="Image Alt" fileReference="/content/dam/asset.jpg"/>
                 <text sling:resourceType="core/franklin/components/text/v1/text" jcr:primaryType="nt:unstructured" text="&lt;p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...&lt;br>There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...&lt;/p>&lt;p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...&lt;br>There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...&lt;/p>"/>
-                <title sling:resourceType="core/franklin/components/title/v1/title" jcr:primaryType="nt:unstructured" jcr:title="Headline between text" type="h2"/>
+                <title sling:resourceType="core/franklin/components/title/v1/title" jcr:primaryType="nt:unstructured" title="Headline between text" titleType="h2"/>
                 <text_1 sling:resourceType="core/franklin/components/text/v1/text" jcr:primaryType="nt:unstructured" text="&lt;p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...&lt;br>There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...&lt;/p>"/>
             </section>
         </root>

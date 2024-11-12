@@ -71,10 +71,10 @@ const button = {
     const { href, text, title } = getLink(node);
     return {
       rt: resourceType,
-      type,
-      href,
-      text,
-      title,
+      linkType: type,
+      link: href,
+      linkText: text,
+      linkTitle: title,
     };
   },
   leaf: true,
