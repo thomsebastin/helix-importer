@@ -26,7 +26,7 @@ function getNumberOfRowsWithOneCell(rows) {
 }
 
 function createModel(node) {
-  const modelName = getBlockName(node);
+  const blockName = getBlockName(node);
   const rows = getChildElements(node);
   const numberOfRowsWithOneCell = getNumberOfRowsWithOneCell(rows);
   const firstItemCells = getChildElements(rows[numberOfRowsWithOneCell]);
@@ -40,8 +40,52 @@ function createModel(node) {
     };
   });
   return {
-    id: `${modelName}-item`,
-    fields,
+    filters: [
+      {
+        id: blockName,
+        components: [
+          `${blockName}-item`,
+        ],
+      },
+    ],
+    definitions: [
+      {
+        title: blockName,
+        id: blockName,
+        plugins: {
+          xwalk: {
+            page: {
+              resourceType: 'core/franklin/components/block/v1/block',
+              template: {
+                name: blockName,
+                model: blockName,
+              },
+            },
+          },
+        },
+      },
+      {
+        title: `${blockName}-item`,
+        id: `${blockName}-item`,
+        plugins: {
+          xwalk: {
+            page: {
+              resourceType: 'core/franklin/components/block/v1/block/item',
+              template: {
+                name: `${blockName}-item`,
+                model: `${blockName}-item`,
+              },
+            },
+          },
+        },
+      },
+    ],
+    models: [
+      {
+        id: `${blockName}-item`,
+        fields,
+      },
+    ],
   };
 }
 

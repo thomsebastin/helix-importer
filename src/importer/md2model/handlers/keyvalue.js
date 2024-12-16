@@ -13,7 +13,7 @@
 import { getBlockName, getChildElements, toCamelCase } from './utils.js';
 
 function createModel(node) {
-  const modelName = getBlockName(node);
+  const blockName = getBlockName(node);
   const rows = getChildElements(node);
   const fields = rows.map((row) => {
     const cells = getChildElements(row);
@@ -27,8 +27,30 @@ function createModel(node) {
     };
   });
   return {
-    id: modelName,
-    fields,
+    filters: [],
+    definitions: [
+      {
+        title: blockName,
+        id: blockName,
+        plugins: {
+          xwalk: {
+            page: {
+              resourceType: 'core/franklin/components/block/v1/block',
+              template: {
+                name: blockName,
+                model: blockName,
+              },
+            },
+          },
+        },
+      },
+    ],
+    models: [
+      {
+        id: blockName,
+        fields,
+      },
+    ],
   };
 }
 

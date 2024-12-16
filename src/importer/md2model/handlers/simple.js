@@ -233,7 +233,7 @@ function groupFields(idx, node) {
 }
 
 function createModel(node) {
-  const name = getBlockName(node);
+  const blockName = getBlockName(node);
   const rows = getChildElements(node);
   const fields = rows.flatMap((row, idx) => {
     const cell = getChildElements(row)[0];
@@ -255,8 +255,30 @@ function createModel(node) {
     throw new Error(`Unsupported cell type: ${cell.tagName}`);
   });
   return {
-    id: name,
-    fields,
+    filters: [],
+    definitions: [
+      {
+        title: blockName,
+        id: blockName,
+        plugins: {
+          xwalk: {
+            page: {
+              resourceType: 'core/franklin/components/block/v1/block',
+              template: {
+                name: blockName,
+                model: blockName,
+              },
+            },
+          },
+        },
+      },
+    ],
+    models: [
+      {
+        id: blockName,
+        fields,
+      },
+    ],
   };
 }
 

@@ -57,7 +57,9 @@ function hast2models(hast) {
     if (isBlock(node, parents)) {
       const model = createModel(node);
       if (model) {
-        models.models.push(model);
+        models.models.push(...model.models);
+        models.definitions.push(...model.definitions);
+        models.filters.push(...model.filters);
       }
     }
     return 'continue';
