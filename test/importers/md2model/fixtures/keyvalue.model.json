@@ -1,27 +1,31 @@
-[
-  {
-    "id": "relatedposts",
-    "fields": [
-      {
-        "component": "text",
-        "name": "title",
-        "label": "Title"
-      },
-      {
-        "component": "text",
-        "name": "category",
-        "label": "Category"
-      },
-      {
-        "component": "text",
-        "name": "maxItems",
-        "label": "Max Items"
-      },
-      {
-        "component": "text",
-        "name": "sortOrder",
-        "label": "Sort Order"
-      }
-    ]
-  }
-]
+{
+  "definitions": [],
+  "filters": [],
+  "models": [
+    {
+      "fields": [
+        {
+          "component": "text",
+          "label": "Title",
+          "name": "title"
+        },
+        {
+          "component": "text",
+          "label": "Category",
+          "name": "category"
+        },
+        {
+          "component": "text",
+          "label": "Max Items",
+          "name": "maxItems"
+        },
+        {
+          "component": "text",
+          "label": "Sort Order",
+          "name": "sortOrder"
+        }
+      ],
+      "id": "relatedposts"
+    }
+  ]
+}

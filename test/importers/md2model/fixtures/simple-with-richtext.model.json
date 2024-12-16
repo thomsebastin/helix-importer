@@ -1,14 +1,18 @@
-[
-  {
-    "fields": [
-      {
-        "component": "richtext",
-        "label": "Text",
-        "name": "text0",
-        "value": "",
-        "valueType": "string"
-      }
-    ],
-    "id": "simple-with-richtext"
-  }
-]
+{
+  "filters": [],
+  "definitions": [],
+  "models": [
+    {
+      "fields": [
+        {
+          "component": "richtext",
+          "label": "Text",
+          "name": "text0",
+          "value": "",
+          "valueType": "string"
+        }
+      ],
+      "id": "simple-with-richtext"
+    }
+  ]
+}

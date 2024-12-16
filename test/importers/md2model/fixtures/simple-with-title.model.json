@@ -1,28 +1,32 @@
-[
-  {
-    "id": "simple-with-title",
-    "fields": [
-      {
-        "component": "text",
-        "label": "Title",
-        "name": "title0",
-        "value": "",
-        "valueType": "string"
-      },
-      {
-        "component": "select",
-        "label": "Text",
-        "name": "title0Type",
-        "valueType": "string",
-        "options" : [
-          { "name": "H1", "value": "h1" },
-          { "name": "H2", "value": "h2" },
-          { "name": "H3", "value": "h3" },
-          { "name": "H4", "value": "h4" },
-          { "name": "H5", "value": "h5" },
-          { "name": "H6", "value": "h6" }
-        ]
-      }
-    ]
-  }
-]
+{
+  "filters": [],
+  "definitions": [],
+  "models": [
+    {
+      "id": "simple-with-title",
+      "fields": [
+        {
+          "component": "text",
+          "label": "Title",
+          "name": "title0",
+          "value": "",
+          "valueType": "string"
+        },
+        {
+          "component": "select",
+          "label": "Text",
+          "name": "title0Type",
+          "valueType": "string",
+          "options" : [
+            { "name": "H1", "value": "h1" },
+            { "name": "H2", "value": "h2" },
+            { "name": "H3", "value": "h3" },
+            { "name": "H4", "value": "h4" },
+            { "name": "H5", "value": "h5" },
+            { "name": "H6", "value": "h6" }
+          ]
+        }
+      ]
+    }
+  ]
+}

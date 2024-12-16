@@ -5,28 +5,33 @@
     {
       "fields": [
         {
+          "component": "reference",
+          "label": "Image",
+          "name": "image0",
+          "value": "",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "label": "Alt",
+          "name": "image0Alt",
+          "value": "",
+          "valueType": "string"
+        }
+      ],
+      "id": "simple-with-image"
+    },
+    {
+      "fields": [
+        {
           "component": "richtext",
           "label": "Text",
           "name": "text0",
           "value": "",
           "valueType": "string"
-        },
-        {
-          "component": "richtext",
-          "label": "Text",
-          "name": "text1",
-          "value": "",
-          "valueType": "string"
-        },
-        {
-          "component": "richtext",
-          "label": "Text",
-          "name": "text2",
-          "value": "",
-          "valueType": "string"
         }
       ],
-      "id": "actors-item"
+      "id": "simple-with-richtext"
     }
   ]
 }

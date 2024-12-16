@@ -48,12 +48,16 @@ function isBlock(node, parents) {
 }
 
 function hast2models(hast) {
-  const models = [];
+  const models = {
+    filters: [],
+    definitions: [],
+    models: [],
+  };
   visitParents(hast, 'element', (node, parents) => {
     if (isBlock(node, parents)) {
       const model = createModel(node);
       if (model) {
-        models.push(model);
+        models.models.push(model);
       }
     }
     return 'continue';

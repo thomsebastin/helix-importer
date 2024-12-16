@@ -1,21 +1,25 @@
-[
-  {
-    "fields": [
-      {
-        "component": "reference",
-        "label": "Image",
-        "name": "image0",
-        "value": "",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "label": "Alt",
-        "name": "image0Alt",
-        "value": "",
-        "valueType": "string"
-      }
-    ],
-    "id": "simple-with-image"
-  }
-]
+{
+  "filters": [],
+  "definitions": [],
+  "models": [
+    {
+      "fields": [
+        {
+          "component": "reference",
+          "label": "Image",
+          "name": "image0",
+          "value": "",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "label": "Alt",
+          "name": "image0Alt",
+          "value": "",
+          "valueType": "string"
+        }
+      ],
+      "id": "simple-with-image"
+    }
+  ]
+}

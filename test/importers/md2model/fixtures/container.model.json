@@ -1,28 +1,32 @@
-[
-  {
-    "id": "actors-item",
-    "fields": [
-      {
-        "component": "richtext",
-        "name": "text0",
-        "value": "",
-        "label": "Text",
-        "valueType": "string"
-      },
-      {
-        "component": "richtext",
-        "name": "text1",
-        "value": "",
-        "label": "Text",
-        "valueType": "string"
-      },
-      {
-        "component": "richtext",
-        "name": "text2",
-        "value": "",
-        "label": "Text",
-        "valueType": "string"
-      }
-    ]
-  }
-]
+{
+  "definitions": [],
+  "filters": [],
+  "models": [
+    {
+      "fields": [
+        {
+          "component": "richtext",
+          "label": "Text",
+          "name": "text0",
+          "value": "",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "label": "Text",
+          "name": "text1",
+          "value": "",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "label": "Text",
+          "name": "text2",
+          "value": "",
+          "valueType": "string"
+        }
+      ],
+      "id": "actors-item"
+    }
+  ]
+}

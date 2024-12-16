@@ -69,4 +69,7 @@ describe('MD to Model converter', () => {
   it('converts a container block with parent properties', async () => {
     await test('container-with-properties');
   });
+  it('converts an md file with multiple blocks', async () => {
+    await test('multiple-blocks');
+  });
 });
