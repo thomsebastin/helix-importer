@@ -1,0 +1,37 @@
+[
+  {
+    "id": "simple-with-link",
+    "fields": [
+      {
+        "component": "aem-content",
+        "label": "Link",
+        "name": "link0",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "label": "Link Type",
+        "name": "link0Type",
+        "valueType": "string",
+        "options" : [
+          { "name": "Default", "value": "default" },
+          { "name": "Primary", "value": "primary" },
+          { "name": "Secondary", "value": "secondary" }
+        ]
+      },
+      {
+        "component": "text",
+        "label": "Link Text",
+        "name": "link0Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Text",
+        "name": "link0Title",
+        "value": "",
+        "valueType": "string"
+      }
+    ]
+  }
+]

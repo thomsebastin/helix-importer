@@ -1,0 +1,14 @@
+[
+  {
+    "id": "code",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text0",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  }
+]

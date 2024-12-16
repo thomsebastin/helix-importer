@@ -1,0 +1,27 @@
+[
+  {
+    "id": "relatedposts",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "text",
+        "name": "category",
+        "label": "Category"
+      },
+      {
+        "component": "text",
+        "name": "maxItems",
+        "label": "Max Items"
+      },
+      {
+        "component": "text",
+        "name": "sortOrder",
+        "label": "Sort Order"
+      }
+    ]
+  }
+]
