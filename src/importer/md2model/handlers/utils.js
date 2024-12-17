@@ -23,3 +23,21 @@ export function toCamelCase(str) {
     .toLowerCase()
     .replace(/[^a-zA-Z0-9]+(.)/g, (match, chr) => chr.toUpperCase());
 }
+
+export function getModelDefinition(blockName) {
+  return {
+    title: blockName,
+    id: blockName,
+    plugins: {
+      xwalk: {
+        page: {
+          resourceType: 'core/franklin/components/block/v1/block',
+          template: {
+            name: blockName,
+            model: blockName,
+          },
+        },
+      },
+    },
+  };
+}

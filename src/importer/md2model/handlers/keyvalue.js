@@ -10,7 +10,12 @@
  * governing permissions and limitations under the License.
  */
 
-import { getBlockName, getChildElements, toCamelCase } from './utils.js';
+import {
+  getBlockName,
+  getChildElements,
+  getModelDefinition,
+  toCamelCase,
+} from './utils.js';
 
 function createModel(node) {
   const blockName = getBlockName(node);
@@ -29,21 +34,7 @@ function createModel(node) {
   return {
     filters: [],
     definitions: [
-      {
-        title: blockName,
-        id: blockName,
-        plugins: {
-          xwalk: {
-            page: {
-              resourceType: 'core/franklin/components/block/v1/block',
-              template: {
-                name: blockName,
-                model: blockName,
-              },
-            },
-          },
-        },
-      },
+      getModelDefinition(blockName),
     ],
     models: [
       {

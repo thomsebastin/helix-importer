@@ -10,7 +10,11 @@
  * governing permissions and limitations under the License.
  */
 
-import { getBlockName, getChildElements } from './utils.js';
+import {
+  getBlockName,
+  getChildElements,
+  getModelDefinition,
+} from './utils.js';
 
 function getNumberOfRowsWithOneCell(rows) {
   let count = 0;
@@ -49,21 +53,7 @@ function createModel(node) {
       },
     ],
     definitions: [
-      {
-        title: blockName,
-        id: blockName,
-        plugins: {
-          xwalk: {
-            page: {
-              resourceType: 'core/franklin/components/block/v1/block',
-              template: {
-                name: blockName,
-                model: blockName,
-              },
-            },
-          },
-        },
-      },
+      getModelDefinition(blockName),
       {
         title: `${blockName}-item`,
         id: `${blockName}-item`,
