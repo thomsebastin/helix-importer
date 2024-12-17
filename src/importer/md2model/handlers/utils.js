@@ -19,8 +19,8 @@ export function toCamelCase(str) {
     .replace(/[^a-zA-Z0-9]+(.)/g, (match, chr) => chr.toUpperCase());
 }
 
-export function getModelDefinition(blockName) {
-  return {
+export function getModelDefinition(blockName, isKeyValue = false) {
+  const model = {
     title: blockName,
     id: blockName,
     plugins: {
@@ -35,4 +35,8 @@ export function getModelDefinition(blockName) {
       },
     },
   };
+  if (isKeyValue) {
+    model.plugins.xwalk.page.template['key-value'] = true;
+  }
+  return model;
 }

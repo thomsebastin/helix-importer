@@ -30,7 +30,7 @@ function createModel(node) {
   return {
     filters: [],
     definitions: [
-      getModelDefinition(blockName, blockName),
+      getModelDefinition(blockName),
     ],
     models: [
       {
