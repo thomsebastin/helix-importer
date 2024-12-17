@@ -33,15 +33,26 @@ function createModel(node) {
   const blockName = getBlockName(node);
   const rows = getChildElements(node);
   const numberOfRowsWithOneCell = getNumberOfRowsWithOneCell(rows);
+  const parentFields = [];
+  // iterate over the parent property rows and create the parent fields
+  for (let i = 0; i < numberOfRowsWithOneCell; i += 1) {
+    const cell = getChildElements(rows[i])[0];
+    const cellHandler = getCellHandler(cell);
+    if (cellHandler) {
+      parentFields.push(...cellHandler.fields(i, '', cell));
+    } else {
+      throw new Error(`Unsupported cell type: ${cell.tagName}`);
+    }
+  }
   const firstItemCells = getChildElements(rows[numberOfRowsWithOneCell]);
-  const fields = firstItemCells.flatMap((cell, idx) => {
+  const itemFields = firstItemCells.flatMap((cell, idx) => {
     const cellHandler = getCellHandler(cell);
     if (cellHandler) {
       return cellHandler.fields(idx, '', cell);
     }
     throw new Error(`Unsupported cell type: ${cell.tagName}`);
   });
-  return {
+  const model = {
     filters: [
       {
         id: blockName,
@@ -71,10 +82,17 @@ function createModel(node) {
     models: [
       {
         id: `${blockName}-item`,
-        fields,
+        fields: itemFields,
       },
     ],
   };
+  if (parentFields.length > 0) {
+    model.models.push({
+      id: blockName,
+      fields: parentFields,
+    });
+  }
+  return model;
 }
 
 function use(node) {
