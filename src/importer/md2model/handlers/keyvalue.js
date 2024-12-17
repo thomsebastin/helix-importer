@@ -9,13 +9,12 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-
 import {
   getBlockName,
-  getChildElements,
   getModelDefinition,
   toCamelCase,
 } from './utils.js';
+import { getChildElements } from '../utils.js';
 
 function createModel(node) {
   const blockName = getBlockName(node);

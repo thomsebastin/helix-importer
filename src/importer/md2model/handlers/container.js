@@ -9,12 +9,11 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-
 import {
   getBlockName,
-  getChildElements,
   getModelDefinition,
 } from './utils.js';
+import { getChildElements } from '../utils.js';
 
 function getNumberOfRowsWithOneCell(rows) {
   let count = 0;

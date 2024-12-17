@@ -9,30 +9,21 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-export function getBlockName(node) {
-  return node.properties.className[0];
-}
+import title from './title.js';
+import link from './link.js';
+import image from './image.js';
+import richtext from './richtext.js';
+import group from './group.js';
 
-export function toCamelCase(str) {
-  return str
-    .toLowerCase()
-    .replace(/[^a-zA-Z0-9]+(.)/g, (match, chr) => chr.toUpperCase());
-}
+const cellHandlers = {
+  title,
+  link,
+  image,
+  richtext,
+  group,
+};
 
-export function getModelDefinition(blockName) {
-  return {
-    title: blockName,
-    id: blockName,
-    plugins: {
-      xwalk: {
-        page: {
-          resourceType: 'core/franklin/components/block/v1/block',
-          template: {
-            name: blockName,
-            model: blockName,
-          },
-        },
-      },
-    },
-  };
+export function getCellHandler(node) {
+  // Find the handler that can handle the node
+  return Object.values(cellHandlers).find((handler) => handler.use(node));
 }
