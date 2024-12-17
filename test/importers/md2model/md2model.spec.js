@@ -60,6 +60,9 @@ describe('MD to Model converter', () => {
   it('converts a simple block with all content types', async () => {
     await test('simple-with-all');
   });
+  it('converts a simple block with empty cell', async () => {
+    await test('simple-with-empty');
+  });
   it('converts a key-value block', async () => {
     await test('keyvalue');
   });

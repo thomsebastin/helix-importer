@@ -21,6 +21,10 @@ function use(node) {
   if (firstChildIsText(node)) {
     return true;
   }
+  if (elements.length === 0) {
+    // if there are no elements, it is richtext
+    return true;
+  }
   if (elements.length === 1) {
     const { tagName } = elements[0];
     return tagName === 'pre';
