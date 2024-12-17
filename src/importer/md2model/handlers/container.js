@@ -14,6 +14,7 @@ import {
   getModelDefinition,
 } from './utils.js';
 import { getChildElements } from '../utils.js';
+import { getCellHandler } from '../cellHandlers/index.js';
 
 function getNumberOfRowsWithOneCell(rows) {
   let count = 0;
@@ -33,14 +34,12 @@ function createModel(node) {
   const rows = getChildElements(node);
   const numberOfRowsWithOneCell = getNumberOfRowsWithOneCell(rows);
   const firstItemCells = getChildElements(rows[numberOfRowsWithOneCell]);
-  const fields = firstItemCells.map((cell, idx) => {
-    return {
-      component: 'richtext',
-      name: `text${idx}`,
-      value: '',
-      label: 'Text',
-      valueType: 'string',
-    };
+  const fields = firstItemCells.flatMap((cell, idx) => {
+    const cellHandler = getCellHandler(cell);
+    if (cellHandler) {
+      return cellHandler.fields(idx, '', cell);
+    }
+    throw new Error(`Unsupported cell type: ${cell.tagName}`);
   });
   return {
     filters: [

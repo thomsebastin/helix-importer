@@ -66,6 +66,9 @@ describe('MD to Model converter', () => {
   it('converts a container block', async () => {
     await test('container');
   });
+  it('converts a container block with group', async () => {
+    await test('container-with-group');
+  });
   it('converts a container block with parent properties', async () => {
     await test('container-with-properties');
   });
