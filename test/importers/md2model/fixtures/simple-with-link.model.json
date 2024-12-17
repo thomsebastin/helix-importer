@@ -46,7 +46,7 @@
         },
         {
           "component": "text",
-          "label": "Text",
+          "label": "Link Title",
           "name": "link0Title",
           "value": "",
           "valueType": "string"

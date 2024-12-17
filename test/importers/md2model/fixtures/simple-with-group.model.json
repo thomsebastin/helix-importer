@@ -36,7 +36,7 @@
         },
         {
           "component": "select",
-          "label": "Text",
+          "label": "Title Type",
           "name": "content0_title2Type",
           "options": [
             {
@@ -121,7 +121,7 @@
         },
         {
           "component": "text",
-          "label": "Text",
+          "label": "Link Title",
           "name": "content0_link5Title",
           "value": "",
           "valueType": "string"

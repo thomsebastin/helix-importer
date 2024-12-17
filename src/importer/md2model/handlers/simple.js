@@ -90,7 +90,7 @@ function titleFields(idx, prefix = '') {
     },
     {
       component: 'select',
-      label: 'Text',
+      label: 'Title Type',
       name: `${prefix}title${idx}Type`,
       valueType: 'string',
       options: [
@@ -132,7 +132,7 @@ function linkFields(idx, prefix = '') {
     },
     {
       component: 'text',
-      label: 'Text',
+      label: 'Link Title',
       name: `${prefix}link${idx}Title`,
       value: '',
       valueType: 'string',
