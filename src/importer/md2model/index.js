@@ -50,7 +50,15 @@ function isBlock(node, parents) {
 function hast2models(hast) {
   const models = {
     filters: [],
-    definitions: [],
+    definition: {
+      groups: [
+        {
+          title: 'Blocks',
+          id: 'blocks',
+          components: [],
+        },
+      ],
+    },
     models: [],
   };
   visitParents(hast, 'element', (node, parents) => {
@@ -58,7 +66,7 @@ function hast2models(hast) {
       const model = createModel(node);
       if (model) {
         models.models.push(...model.models);
-        models.definitions.push(...model.definitions);
+        models.definition.groups[0].components.push(...model.definition.groups[0].components);
         models.filters.push(...model.filters);
       }
     }

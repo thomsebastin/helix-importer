@@ -67,24 +67,32 @@ function createModel(node) {
         ],
       },
     ],
-    definitions: [
-      getModelDefinition(blockName),
-      {
-        title: `${blockName}-item`,
-        id: `${blockName}-item`,
-        plugins: {
-          xwalk: {
-            page: {
-              resourceType: 'core/franklin/components/block/v1/block/item',
-              template: {
-                name: `${blockName}-item`,
-                model: `${blockName}-item`,
+    definition: {
+      groups: [
+        {
+          title: 'Blocks',
+          id: 'blocks',
+          components: [
+            getModelDefinition(blockName),
+            {
+              title: `${blockName}-item`,
+              id: `${blockName}-item`,
+              plugins: {
+                xwalk: {
+                  page: {
+                    resourceType: 'core/franklin/components/block/v1/block/item',
+                    template: {
+                      name: `${blockName}-item`,
+                      model: `${blockName}-item`,
+                    },
+                  },
+                },
               },
             },
-          },
+          ],
         },
-      },
-    ],
+      ],
+    },
     models: [
       {
         id: `${blockName}-item`,

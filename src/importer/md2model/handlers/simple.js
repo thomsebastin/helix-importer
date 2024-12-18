@@ -35,9 +35,17 @@ function createModel(node) {
   }
   return {
     filters: [],
-    definitions: [
-      getModelDefinition(blockName),
-    ],
+    definition: {
+      groups: [
+        {
+          title: 'Blocks',
+          id: 'blocks',
+          components: [
+            getModelDefinition(blockName),
+          ],
+        },
+      ],
+    },
     models: [
       {
         id: blockName,
