@@ -11,6 +11,7 @@
  */
 import {
   getBlockName,
+  getClassesField,
   getModelDefinition,
   toCamelCase,
 } from './utils.js';
@@ -30,6 +31,11 @@ function createModel(node) {
       label,
     };
   });
+  const classesField = getClassesField(node);
+  if (classesField) {
+    // insert the classes field at the beginning of the fields array
+    fields.unshift(classesField);
+  }
   return {
     filters: [],
     definitions: [

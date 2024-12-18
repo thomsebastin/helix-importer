@@ -36,6 +36,9 @@ describe('MD to Model converter', () => {
   it('converts a simple block', async () => {
     await test('simple');
   });
+  it('converts a simple block with block classes', async () => {
+    await test('simple-with-classes');
+  });
   it('converts a simple block with code', async () => {
     await test('code');
   });
@@ -66,8 +69,14 @@ describe('MD to Model converter', () => {
   it('converts a key-value block', async () => {
     await test('keyvalue');
   });
+  it('converts a key-value block with block classes', async () => {
+    await test('keyvalue-with-classes');
+  });
   it('converts a container block', async () => {
     await test('container');
+  });
+  it('converts a container block with block classes', async () => {
+    await test('container-with-classes');
   });
   it('converts a container block with group', async () => {
     await test('container-with-group');

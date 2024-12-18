@@ -11,6 +11,7 @@
  */
 import {
   getBlockName,
+  getClassesField,
   getModelDefinition,
 } from './utils.js';
 import { getChildElements } from '../utils.js';
@@ -43,6 +44,11 @@ function createModel(node) {
     } else {
       throw new Error(`Unsupported cell type: ${cell.tagName}`);
     }
+  }
+  const classesField = getClassesField(node);
+  if (classesField) {
+    // insert the classes field at the beginning of the fields array
+    parentFields.unshift(classesField);
   }
   const firstItemCells = getChildElements(rows[numberOfRowsWithOneCell]);
   const itemFields = firstItemCells.flatMap((cell, idx) => {

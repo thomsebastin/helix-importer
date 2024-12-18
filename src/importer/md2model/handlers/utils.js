@@ -40,3 +40,29 @@ export function getModelDefinition(blockName, isKeyValue = false) {
   }
   return model;
 }
+
+export function getClassesField(node) {
+  // remove the first element from the className array as it is the block name
+  const classes = node.properties.className.slice(1);
+  if (classes.length === 0) {
+    return null;
+  }
+  const options = [
+    {
+      name: 'default',
+      value: '',
+    },
+    ...classes.map((c) => ({
+      name: c,
+      value: c,
+    })),
+  ];
+  return {
+    component: 'select',
+    name: 'classes',
+    label: 'Options',
+    valueType: 'string',
+    value: '',
+    options,
+  };
+}

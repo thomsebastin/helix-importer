@@ -11,6 +11,7 @@
  */
 import {
   getBlockName,
+  getClassesField,
   getModelDefinition,
 } from './utils.js';
 import { getChildElements } from '../utils.js';
@@ -27,6 +28,11 @@ function createModel(node) {
     }
     throw new Error(`Unsupported cell type: ${cell.tagName}`);
   });
+  const classesField = getClassesField(node);
+  if (classesField) {
+    // insert the classes field at the beginning of the fields array
+    fields.unshift(classesField);
+  }
   return {
     filters: [],
     definitions: [
