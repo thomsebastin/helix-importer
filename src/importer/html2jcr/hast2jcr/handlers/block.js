@@ -45,7 +45,7 @@ function findNameFilterById(componentDefinition, nameClass) {
 function encodeHtml(str) {
   /* eslint-disable no-param-reassign */
   str = str.replace(/<code>(.*?)<\/code>/gs, (match) => match.replace(/\n/g, '&#xa;'));
-  return str.replace(/&(?!amp;|lt;|gt;|quot;|apos;|#xa|#\d+;)/g, '&amp;')
+  return str.replace(/&(?!amp;|lt;|gt;|quot;|apos;|#xa|#\d+;|#x[0-9A-Fa-f]+;)/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/(\r\n|\n|\r)/gm, '')
     .replace(/>[\s]*&lt;/g, '>&lt;');
