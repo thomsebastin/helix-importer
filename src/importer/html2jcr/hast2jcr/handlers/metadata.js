@@ -90,6 +90,24 @@ const metadata = {
     if ($title) {
       metaAttributes = { 'jcr:title': encodeHTMLEntities(toString($title)), ...metaAttributes };
     }
+
+    /**
+     * Compare the meta object with metaNameFields and add the properties name that is
+     * not present in metaNameFields to the metaAttributes object and set the value
+     * to the content of the meta tag
+     */
+    meta.forEach((child) => {
+      const { name, property, content } = child.properties;
+      if (metaNameFields.indexOf(name) === -1 && metaNameFields.indexOf(property) === -1) {
+        const propertyName = toPropertyName(name || property);
+        if (propertyName === 'pagetitle') {
+          metaAttributes = { ...metaAttributes, pageTitle: encodeHTMLEntities(content) };
+        } else {
+          metaAttributes = { ...metaAttributes, [propertyName]: encodeHTMLEntities(content) };
+        }
+      }
+    });
+
     return {
       ...metaAttributes,
     };
