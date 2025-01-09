@@ -363,6 +363,23 @@ function getBlockItems(node, id, allowedComponents, ctx) {
     const parsedComponents = allowedComponents.map((childComponentId) => {
       const { name, model } = findNameFilterById(componentDefinition, childComponentId);
       const properties = extractProperties(rows[i], model, ctx, 'blockItem');
+
+      /**
+       * We have a block called featured list and it has an allowedBlock called list-item.
+       * During jcr conversion, this block is sometimes adding empty list items despite
+       * not having any such items in the original html. For now, we are fixing this specifically
+       * for list-item block by returning null in such cases.
+       */
+      if (model === 'list-item') {
+        const listItemFields = ctx.componentModels.find((item) => item.id === model)
+          .fields.map((item) => item.name) || ['listItem_icon', 'listItem_iconMimeType', 'listItem_iconText', 'listItem_description'];
+        const hasKey = listItemFields
+          .some((field) => Object.prototype.hasOwnProperty.call(properties, field));
+        if (!hasKey || (properties.listItem_icon && !properties.listItem_description)) {
+          return null;
+        }
+      }
+
       return {
         type: 'element',
         name: i > 0 ? `item_${i - 1}` : 'item',
@@ -375,7 +392,7 @@ function getBlockItems(node, id, allowedComponents, ctx) {
       };
     });
     return parsedComponents.sort((a, b) => Object.entries(b).length - Object.entries(a).length)[0];
-  });
+  }).filter((item) => item !== null);
 }
 
 function generateProperties(node, ctx) {
