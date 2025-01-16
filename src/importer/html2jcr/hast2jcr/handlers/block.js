@@ -188,11 +188,29 @@ function extractGroupProperties(node, group, elements, properties, ctx) {
       if (handler.name === 'button') {
         const href = select('a', element)?.properties?.href;
         const firstField = getSpecificFieldByCondition(href, element, isLinkField);
-        if (firstField) {
-          properties[firstField.field.name] = encodeHTMLEntities(href);
-          collapseField(firstField.field.name, groupFields, element, properties);
-          remainingFields = remainingFields.slice(firstField.index + 1);
-          return;
+        /**
+         * UPS: tel links in featured list block is handled as a rich text,
+         * but the handler treats it as a button and the firstField is not found.
+         * Overriding the default behavior to handle tel links as a text and
+         * encode the html content.This is done only for list-item block.
+         * If needed, will add this for other blocks as well.
+         *
+         * This is not the proper fix and only works for UPS use case,
+         * adding multiple checks to ensure that this doesn't break other blocks.
+         */
+        if (firstField || href.includes('tel:')) {
+          if (!firstField) {
+            const hasListDescription = Object.hasOwn(properties, 'listItem_description');
+            if (hasListDescription) {
+              properties.listItem_description += encodeHtml(toHtml(element).trim());
+              return;
+            }
+          } else {
+            properties[firstField.field.name] = encodeHTMLEntities(href);
+            collapseField(firstField.field.name, groupFields, element, properties);
+            remainingFields = remainingFields.slice(firstField.index + 1);
+            return;
+          }
         }
       }
       if (handler.name === 'image') {
