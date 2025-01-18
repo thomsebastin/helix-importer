@@ -46,6 +46,12 @@ function encodeHtml(str) {
   /* eslint-disable no-param-reassign */
   str = str.replace(/<code>(.*?)<\/code>/gs, (match) => match.replace(/\n/g, '&#xa;'));
   return str.replace(/&(?!amp;|lt;|gt;|quot;|apos;|#xa|#\d+;|#x[0-9A-Fa-f]+;)/g, '&amp;')
+  /**
+   * UPS: Replace <br> tags with \n in the HTML string. This was added to
+   * fix an issue where the br tags are rendering a "\" in the transformed text.
+   * Will revert if this causes any issues elsewhere.
+   */
+    .replace(/<br\s*\/?>/gi, '\n')
     .replace(/</g, '&lt;')
     .replace(/(\r\n|\n|\r)/gm, '')
     .replace(/>[\s]*&lt;/g, '>&lt;');
