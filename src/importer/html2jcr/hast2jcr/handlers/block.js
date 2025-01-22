@@ -78,6 +78,12 @@ function collapseField(id, fields, node, properties = {}) {
       } else if (suffix === 'MimeType') {
         // TODO: can we guess the mime type from the src?
         properties[field.name] = 'image/unknown';
+      } else if (suffix === 'Alt') {
+        /**
+         * UPS: Properties are empty for some unknown reason. This fetches the alt from
+         * the image tag and sets it as the alt property.
+         * */
+        properties[field.name] = encodeHTMLEntities(select('img', node)?.properties?.alt);
       } else {
         properties[field.name] = encodeHTMLEntities(node?.properties?.[suffix.toLowerCase()]);
       }
