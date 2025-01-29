@@ -292,8 +292,10 @@ function extractProperties(node, id, ctx, mode) {
     if (field.component === 'group') {
       const selector = mode === 'blockItem' ? ':scope' : 'div > div';
       const containerNode = select(selector, children[childIdx]);
-      const containerChildren = containerNode.children.filter((child) => child.type === 'element');
-      extractGroupProperties(node, field, containerChildren, properties, ctx);
+      if (containerNode) {
+        const containerChildren = containerNode.children.filter((child) => child.type === 'element');
+        extractGroupProperties(node, field, containerChildren, properties, ctx);
+      }
     } else if (field.name === 'classes' && mode !== 'blockItem') {
       // handle the classes as className only for blocks, not block items
       const classNames = node?.properties?.className;
