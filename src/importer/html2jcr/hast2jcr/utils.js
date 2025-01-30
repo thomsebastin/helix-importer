@@ -14,14 +14,7 @@ export function encodeHTMLEntities(str) {
     return '';
   }
 
-  return str.replace(/&(?!amp;|lt;|gt;|quot;|apos;|#\d+;|#x[0-9A-Fa-f]+;)/g, '&amp;')
-    /**
-     * UPS: Replace all br tags with newline chars, since
-     * br tags are not properly handled in the JCR.
-     */
-    .replace(/<br\s*\/?>/gi, '\n')
-    .replace(/</g, '&lt;')
-    .replace(/"/g, '&quot;');
+  return str.replace(/&(?!amp;|lt;|gt;|quot;|apos;|#\d+;|#x[0-9A-Fa-f]+;)/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 }
 
 export function matchStructure(node, template) {
