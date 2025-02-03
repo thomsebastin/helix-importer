@@ -51,6 +51,21 @@ function encodeHtml(str) {
     .replace(/>[\s]*&lt;/g, '>&lt;');
 }
 
+function encodeAccordionHtml(str) {
+  /* eslint-disable no-param-reassign */
+  str = str.replace(/<code>(.*?)<\/code>/gs, (match) => match.replace(/\n/g, '&#xa;'));
+  return str.replace(/&(?!amp;|lt;|gt;|quot;|apos;|#xa|#\d+;|#x[0-9A-Fa-f]+;)/g, '&amp;')
+  /**
+   * UPS: Replace <br> tags with \n in the HTML string. This was added to
+   * fix an issue where the br tags are rendering a "\" in the transformed text.
+   * Will revert if this causes any issues elsewhere.
+   */
+    .replace(/<br\s*\/?>/gi, '\n')
+    .replace(/</g, '&lt;')
+    .replace(/(\r\n|\n|\r)/gm, '')
+    .replace(/>[\s]*&lt;/g, '>&lt;');
+}
+
 function collapseField(id, fields, node, properties = {}) {
   /* eslint-disable no-param-reassign */
   const suffixes = ['Alt', 'Type', 'MimeType', 'Text', 'Title'];
@@ -335,7 +350,13 @@ function extractProperties(node, id, ctx, mode) {
         // replace the selection items with the new p
         selection = [p];
       }
-      properties[field.name] = encodeHtml(toHtml(selection).trim());
+
+      // UPS: Hacky, but works, Special handling for accordion richtext slashes
+      if (field.label === 'Accordion Text' && field.component === 'richtext') {
+        properties[field.name] = encodeAccordionHtml(toHtml(selection).trim());
+      } else {
+        properties[field.name] = encodeHtml(toHtml(selection).trim());
+      }
     } else {
       const imageNode = select('img', children[childIdx]);
       const linkNode = select('a', children[childIdx]);
