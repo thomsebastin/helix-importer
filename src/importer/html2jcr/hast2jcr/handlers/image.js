@@ -58,6 +58,12 @@ const image = {
       alt,
       ...(title !== '' ? { title } : {}),
       fileReference,
+      /**
+       * UPS: Images, when used inside a freetext gets dropped when JCR is generated.
+       * Below properties are required for it to work.
+       */
+      image: fileReference,
+      imageAlt: alt,
     };
   },
   leaf: true,
