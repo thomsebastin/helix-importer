@@ -98,12 +98,20 @@ const metadata = {
      */
     meta.forEach((child) => {
       const { name, property, content } = child.properties;
+      /**
+       * UPS: Updates to incorporate some additional properties and handle casing for
+       * them.
+       */
       if (metaNameFields.indexOf(name) === -1 && metaNameFields.indexOf(property) === -1) {
         const propertyName = toPropertyName(name || property);
         if (propertyName === 'pagetitle') {
-          metaAttributes = { ...metaAttributes, pageTitle: encodeHTMLEntities(content) };
+          metaAttributes.pageTitle = encodeHTMLEntities(content);
+        } else if (propertyName === 'cq:lastmodified') {
+          metaAttributes['cq:lastModified'] = encodeHTMLEntities(content);
+        } else if (propertyName === 'cq:lastmodifiedby') {
+          metaAttributes['cq:lastModifiedBy'] = encodeHTMLEntities(content);
         } else {
-          metaAttributes = { ...metaAttributes, [propertyName]: encodeHTMLEntities(content) };
+          metaAttributes[propertyName] = encodeHTMLEntities(content);
         }
       }
     });
