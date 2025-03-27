@@ -81,7 +81,9 @@ function collapseField(id, fields, node, properties = {}) {
       } else if (suffix === 'MimeType') {
         // TODO: can we guess the mime type from the src?
         properties[field.name] = 'image/unknown';
-      } else if (suffix === 'Alt') {
+        // UPS: Check presence of the word 'Alt' in label as well since we don't
+        // use alt as suffix anymore.
+      } else if (suffix === 'Alt' || (field.label)?.toLowerCase().includes("alt")) {
         /**
          * UPS: Properties are empty for some unknown reason. This fetches the alt from
          * the image tag and sets it as the alt property.
@@ -162,7 +164,7 @@ function isLinkField(field, fields) {
 
 function isImageField(field, fields) {
   // a reference field is usually an image, cusotm fields may as well but need the MimeType subfield
-  return field.component === 'reference' || fields.find((f) => f.name === `${field.name}MimeType`);
+  return field.component === 'reference' || fields.find((f) => f.name === `${field.name}MimeType`) || field.component === 'custom-asset-namespace:custom-asset';
 }
 
 function extractGroupProperties(node, group, elements, properties, ctx) {
